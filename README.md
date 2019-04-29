@@ -1,11 +1,11 @@
 
 
-<img src="Screen record 1.gif" align="left" height="300" width="180" hspace="10" vspace="10"/>
-<br/>
+<img src="Screen record 1.gif" align="left" height="300" width="180" hspace="10" vspace="10">
+<br>
 
 
-# License
-
+License
+-------
 Copyright 2018 Kyungjung Kim
 
 Licensed under the Apache License, Version 2.0 (the "License");
