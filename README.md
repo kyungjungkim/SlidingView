@@ -1,7 +1,7 @@
 # SlidingView
 
 
-<img src="Screen record 1.gif" align="left" height="300" width="180" hspace="10" vspace="10">
+<img src="Screen record 1.gif" height="300">
 <br>
 
 
