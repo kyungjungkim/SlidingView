@@ -69,6 +69,33 @@ public class MainActivity extends AppCompatActivity {
                 case 4:
                     break;
             }
+            
+            /*
+        if (isAll1Clicked && clickedSectionNum == 0) { // 전체버튼 클릭
+            if (isAll1) { // 선택.
+                [cell setSelected:YES animated:YES];
+                [selectedName addObject:cell.nameLbl.text];
+                [[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"YES"];
+                
+                if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
+                    isAll1Clicked = NO;
+                
+                [menu layoutIfNeeded];
+                
+                return cell;
+            } else if (!isAll1) { // 해제.
+                [cell setSelected:NO animated:YES];
+                [selectedName removeObjectAtIndex:indexPath.row];
+                
+                [[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"NO"];
+                
+                if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
+                    isAll1Clicked = NO;
+                
+                [menu layoutIfNeeded];
+            }
+        }
+    */
 
             dlDrawerLayout.closeDrawer(lvNavList);
         }
