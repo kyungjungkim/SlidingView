@@ -49,7 +49,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         dlDrawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_main_drawerlayout);
-        lvNavList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, navItems));
+        lvNavList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, navItems));
+        lvNavList.setOnItemClickListener(new DrawerItemClickListener());
+
+        lvNavList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item1, navItems));
         lvNavList.setOnItemClickListener(new DrawerItemClickListener());
     }
 
