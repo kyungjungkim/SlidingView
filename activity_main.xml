@@ -32,8 +32,7 @@
             android:layout_gravity="start"
             android:background="#EDEDED"
             android:choiceMode="singleChoice"
-            android:divider="@android:color/black"
-            android:dividerHeight="1dp" />
+            android:divider="@android:color/black" />
     </androidx.drawerlayout.widget.DrawerLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
