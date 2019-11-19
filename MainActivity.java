@@ -4,17 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ListView;
-import android.widget.TabHost;
+import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String[] navItems = {"1", "2", "3", "4", "5"};
     private ListView lvNavList;
     private FrameLayout flContainer;
     private DrawerLayout dlDrawerLayout;
@@ -36,7 +38,61 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+
+        // Create a BaseAdapter instance.
+        BaseAdapter customBaseAdapter = new BaseAdapter() {
+            // Return list view item count.
+            @Override
+            public int getCount() {
+                return 5;
+            }
+
+            @Override
+            public Object getItem(int i) {
+                return null;
+            }
+
+            @Override
+            public long getItemId(int i) {
+                return 0;
+            }
+
+            @Override
+            public View getView(int itemIndex, View itemView, ViewGroup viewGroup) {
+
+                if (itemView == null) {   // First inflate the RelativeView object.
+                    itemView = LayoutInflater.from(MainActivity.this).inflate(R.layout.activity_list_view_base_adapter, null);
+                }
+
+
+                // final String title = "1";
+
+
+                TextView titleView = (TextView)itemView.findViewById(R.id.textView);
+
+                if (0 == itemIndex) {
+                    titleView.setText("1");
+                } else if (1 == itemIndex) {
+                    titleView.setText("2");
+                } else if (2 == itemIndex) {
+                    titleView.setText("3");
+                } else if (3 == itemIndex) {
+                    titleView.setText("4");
+                } else {
+                    titleView.setText("5");
+                }
+
+
+                return itemView;
+            }
+        };
+
+
         lvNavList = (ListView) findViewById(R.id.lv_activity_main_nav_list);
+
+        // Set the custom base adapter to it.
+        lvNavList.setAdapter(customBaseAdapter);
+
         flContainer = (FrameLayout) findViewById(R.id.fl_activity_main_container);
         btn = (Button) findViewById(R.id.btn);
 
@@ -48,13 +104,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        dlDrawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_main_drawerlayout);
-        lvNavList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, navItems));
-        lvNavList.setOnItemClickListener(new DrawerItemClickListener());
 
-        lvNavList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item1, navItems));
-        lvNavList.setOnItemClickListener(new DrawerItemClickListener());
+        dlDrawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_main_drawerlayout);
     }
+
 
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
 
