@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -21,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private FrameLayout flContainer;
     private DrawerLayout dlDrawerLayout;
     private Button btn;
-    private Button rightBtn;
     private boolean isAll1Clicked;
     private int clickedSectionNum;
     private boolean isAll1;
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             // Return list view item count.
             @Override
             public int getCount() {
-                return 5;
+                return 4;
             }
 
             @Override
@@ -72,15 +72,13 @@ public class MainActivity extends AppCompatActivity {
                 TextView titleView = (TextView)itemView.findViewById(R.id.textView);
 
                 if (0 == itemIndex) {
-                    titleView.setText("1");
+                    titleView.setText("All");
                 } else if (1 == itemIndex) {
-                    titleView.setText("2");
+                    titleView.setText("1");
                 } else if (2 == itemIndex) {
-                    titleView.setText("3");
+                    titleView.setText("2");
                 } else if (3 == itemIndex) {
-                    titleView.setText("4");
-                } else {
-                    titleView.setText("5");
+                    titleView.setText("3");
                 }
 
 
@@ -108,12 +106,15 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        rightBtn = (Button) findViewById(R.id.rightBtn);
-        rightBtn.setOnClickListener(new OnClickListener() {
-
+        lvNavList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                       /*
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (0 == position) {
+                    TextView lableView = (TextView)view.findViewById(R.id.lableView);
+                    lableView.setText("clicked");
+                }
+
+                /*
                         if (isAll1Clicked && clickedSectionNum == 0) { // 전체버튼 클릭
                         if (isAll1) { // 선택.
                             [cell setSelected:YES animated:YES];
@@ -142,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     */
 
-                     //  dlDrawerLayout.closeDrawer(lvNavList);
+//                  dlDrawerLayout.closeDrawer(lvNavList);
             }
         });
     }
