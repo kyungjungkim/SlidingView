@@ -6,8 +6,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -21,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
     private FrameLayout flContainer;
     private DrawerLayout dlDrawerLayout;
     private Button btn;
+    private Button rightBtn;
+    private boolean isAll1Clicked;
+    private int clickedSectionNum;
+    private boolean isAll1;
 
 
     @Override
@@ -65,9 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
-                // final String title = "1";
-
-
                 TextView titleView = (TextView)itemView.findViewById(R.id.textView);
 
                 if (0 == itemIndex) {
@@ -94,9 +95,11 @@ public class MainActivity extends AppCompatActivity {
         lvNavList.setAdapter(customBaseAdapter);
 
         flContainer = (FrameLayout) findViewById(R.id.fl_activity_main_container);
-        btn = (Button) findViewById(R.id.btn);
 
-        btn.setOnClickListener(new View.OnClickListener() {
+
+        dlDrawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_main_drawerlayout);
+        btn = (Button) findViewById(R.id.btn);
+        btn.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -105,55 +108,42 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        dlDrawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_main_drawerlayout);
-    }
+        rightBtn = (Button) findViewById(R.id.rightBtn);
+        rightBtn.setOnClickListener(new OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                       /*
+                        if (isAll1Clicked && clickedSectionNum == 0) { // 전체버튼 클릭
+                        if (isAll1) { // 선택.
+                            [cell setSelected:YES animated:YES];
+                            [selectedName addObject:cell.nameLbl.text];
+                            [[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"YES"];
 
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+                        if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
+                            isAll1Clicked = false;
 
-        @Override
-        public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
-            switch (position) {
-                case 0:
-                    break;
-                case 1:
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
+                        [menu layoutIfNeeded];
+                        dlDrawerLayout.refreshDrawableState();
+
+                        return cell;
+                    } else if (!isAll1) { // 해제.
+                        [cell setSelected:NO animated:YES];
+                        [selectedName removeObjectAtIndex:indexPath.row];
+
+                        [[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"NO"];
+
+                        if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
+                            isAll1Clicked = false;
+
+                       [menu layoutIfNeeded];
+                       dlDrawerLayout.refreshDrawableState();
+                        }
+                    }
+                    */
+
+                     //  dlDrawerLayout.closeDrawer(lvNavList);
             }
-            
-            /*
-        if (isAll1Clicked && clickedSectionNum == 0) { // 전체버튼 클릭
-            if (isAll1) { // 선택.
-                [cell setSelected:YES animated:YES];
-                [selectedName addObject:cell.nameLbl.text];
-                [[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"YES"];
-                
-                if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
-                    isAll1Clicked = NO;
-                
-                [menu layoutIfNeeded];
-                
-                return cell;
-            } else if (!isAll1) { // 해제.
-                [cell setSelected:NO animated:YES];
-                [selectedName removeObjectAtIndex:indexPath.row];
-                
-                [[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"NO"];
-                
-                if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
-                    isAll1Clicked = NO;
-                
-                [menu layoutIfNeeded];
-            }
-        }
-    */
-
-            dlDrawerLayout.closeDrawer(lvNavList);
-        }
+        });
     }
 }
