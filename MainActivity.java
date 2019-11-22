@@ -82,6 +82,11 @@ public class MainActivity extends AppCompatActivity {
                 }
 
 
+                TextView lableView = (TextView)itemView.findViewById(R.id.lableView);
+
+                lableView.setText("OFF");
+                
+
                 return itemView;
             }
         };
@@ -111,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (0 == position) {
                     TextView lableView = (TextView)view.findViewById(R.id.lableView);
-                    lableView.setText("clicked");
+                    lableView.setText("ON");
                 }
 
                 /*
