@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
 
 
                 TextView lableView = (TextView)itemView.findViewById(R.id.lableView);
-
                 lableView.setText("OFF");
                 
 
@@ -114,8 +113,18 @@ public class MainActivity extends AppCompatActivity {
         lvNavList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView lableView = (TextView)view.findViewById(R.id.lableView);
+
                 if (0 == position) {
-                    TextView lableView = (TextView)view.findViewById(R.id.lableView);
+                    lableView.setText("ON");
+                    lvNavList.performItemClick(lvNavList.getChildAt(1), 1, lvNavList.getChildAt(1).getId());
+                    lvNavList.performItemClick(lvNavList.getChildAt(2), 2, lvNavList.getChildAt(2).getId());
+                    lvNavList.performItemClick(lvNavList.getChildAt(3),3, lvNavList.getChildAt(3).getId());
+                } else if (1 == position) {
+                    lableView.setText("ON");
+                } else if (2 == position) {
+                    lableView.setText("ON");
+                } else if (3 == position) {
                     lableView.setText("ON");
                 }
 
