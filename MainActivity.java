@@ -22,10 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private FrameLayout flContainer;
     private DrawerLayout dlDrawerLayout;
     private Button btn;
-    private boolean isAll1Clicked;
-    private int clickedSectionNum;
-    private boolean isAll1;
-
 
     @Override
     public void onBackPressed() {
@@ -41,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
+
 
 
         // Create a BaseAdapter instance.
@@ -116,48 +113,38 @@ public class MainActivity extends AppCompatActivity {
                 TextView lableView = (TextView)view.findViewById(R.id.lableView);
 
                 if (0 == position) {
-                    lableView.setText("ON");
-                    lvNavList.performItemClick(lvNavList.getChildAt(1), 1, lvNavList.getChildAt(1).getId());
-                    lvNavList.performItemClick(lvNavList.getChildAt(2), 2, lvNavList.getChildAt(2).getId());
-                    lvNavList.performItemClick(lvNavList.getChildAt(3),3, lvNavList.getChildAt(3).getId());
+                    if (lableView.getText().equals("OFF")) {
+                        lableView.setText("ON");
+                        lvNavList.performItemClick(lvNavList.getChildAt(1), 1, lvNavList.getChildAt(1).getId());
+                        lvNavList.performItemClick(lvNavList.getChildAt(2), 2, lvNavList.getChildAt(2).getId());
+                        lvNavList.performItemClick(lvNavList.getChildAt(3), 3, lvNavList.getChildAt(3).getId());
+                    } else if (lableView.getText().equals("ON")) {
+                        lableView.setText("OFF");
+                        lvNavList.performItemClick(lvNavList.getChildAt(1), 1, lvNavList.getChildAt(1).getId());
+                        lvNavList.performItemClick(lvNavList.getChildAt(2), 2, lvNavList.getChildAt(2).getId());
+                        lvNavList.performItemClick(lvNavList.getChildAt(3), 3, lvNavList.getChildAt(3).getId());
+                    }
                 } else if (1 == position) {
-                    lableView.setText("ON");
+                    if (lableView.getText().equals("OFF")) {
+                        lableView.setText("ON");
+                    } else if (lableView.getText().equals("ON")) {
+                        lableView.setText("OFF");
+                    }
                 } else if (2 == position) {
-                    lableView.setText("ON");
+                    if (lableView.getText().equals("OFF")) {
+                        lableView.setText("ON");
+                    } else if (lableView.getText().equals("ON")) {
+                        lableView.setText("OFF");
+                    }
                 } else if (3 == position) {
-                    lableView.setText("ON");
+                    if (lableView.getText().equals("OFF")) {
+                        lableView.setText("ON");
+                    } else if (lableView.getText().equals("ON")) {
+                        lableView.setText("OFF");
+                    }
                 }
 
-                /*
-                        if (isAll1Clicked && clickedSectionNum == 0) { // 전체버튼 클릭
-                        if (isAll1) { // 선택.
-                            [cell setSelected:YES animated:YES];
-                            [selectedName addObject:cell.nameLbl.text];
-                            [[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"YES"];
-
-                        if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
-                            isAll1Clicked = false;
-
-                        [menu layoutIfNeeded];
-                        dlDrawerLayout.refreshDrawableState();
-
-                        return cell;
-                    } else if (!isAll1) { // 해제.
-                        [cell setSelected:NO animated:YES];
-                        [selectedName removeObjectAtIndex:indexPath.row];
-
-                        [[isSectionSelected objectForKey:[NSNumber numberWithLong:indexPath.section]] isEqualToString:@"NO"];
-
-                        if (indexPath.row == [sectionData count] - 1)   // 마지막 셀
-                            isAll1Clicked = false;
-
-                       [menu layoutIfNeeded];
-                       dlDrawerLayout.refreshDrawableState();
-                        }
-                    }
-                    */
-
-//                  dlDrawerLayout.closeDrawer(lvNavList);
+                dlDrawerLayout.closeDrawer(lvNavList);
             }
         });
     }
