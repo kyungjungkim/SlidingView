@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                dlDrawerLayout.closeDrawer(lvNavList);
+//                dlDrawerLayout.closeDrawer(lvNavList);
             }
         });
     }
