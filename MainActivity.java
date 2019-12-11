@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.test1;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -22,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private FrameLayout flContainer;
     private DrawerLayout dlDrawerLayout;
     private Button btn;
+    private Boolean isAll;
+    private Boolean allState;
 
     @Override
     public void onBackPressed() {
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
+        isAll = false;
+        allState = false;
 
 
         // Create a BaseAdapter instance.
@@ -113,34 +117,78 @@ public class MainActivity extends AppCompatActivity {
                 TextView lableView = (TextView)view.findViewById(R.id.lableView);
 
                 if (0 == position) {
+                    isAll = true;
+
                     if (lableView.getText().equals("OFF")) {
+                        allState = true;
                         lableView.setText("ON");
+
                         lvNavList.performItemClick(lvNavList.getChildAt(1), 1, lvNavList.getChildAt(1).getId());
                         lvNavList.performItemClick(lvNavList.getChildAt(2), 2, lvNavList.getChildAt(2).getId());
                         lvNavList.performItemClick(lvNavList.getChildAt(3), 3, lvNavList.getChildAt(3).getId());
                     } else if (lableView.getText().equals("ON")) {
+                        allState = false;
                         lableView.setText("OFF");
+
                         lvNavList.performItemClick(lvNavList.getChildAt(1), 1, lvNavList.getChildAt(1).getId());
                         lvNavList.performItemClick(lvNavList.getChildAt(2), 2, lvNavList.getChildAt(2).getId());
                         lvNavList.performItemClick(lvNavList.getChildAt(3), 3, lvNavList.getChildAt(3).getId());
                     }
+
+                    isAll = false;
                 } else if (1 == position) {
-                    if (lableView.getText().equals("OFF")) {
-                        lableView.setText("ON");
-                    } else if (lableView.getText().equals("ON")) {
-                        lableView.setText("OFF");
+                    if (isAll == true) {
+                        if (allState == true) {
+                            if (lableView.getText().equals("OFF")) {
+                                lableView.setText("ON");
+                            }
+                        } else {
+                            if (lableView.getText().equals("ON")) {
+                                lableView.setText("OFF");
+                            }
+                        }
+                    } else {
+                        if (lableView.getText().equals("OFF")) {
+                            lableView.setText("ON");
+                        } else if (lableView.getText().equals("ON")) {
+                            lableView.setText("OFF");
+                        }
                     }
                 } else if (2 == position) {
-                    if (lableView.getText().equals("OFF")) {
-                        lableView.setText("ON");
-                    } else if (lableView.getText().equals("ON")) {
-                        lableView.setText("OFF");
+                    if (isAll == true) {
+                        if (allState == true) {
+                            if (lableView.getText().equals("OFF")) {
+                                lableView.setText("ON");
+                            }
+                        } else {
+                            if (lableView.getText().equals("ON")) {
+                                lableView.setText("OFF");
+                            }
+                        }
+                    } else {
+                        if (lableView.getText().equals("OFF")) {
+                            lableView.setText("ON");
+                        } else if (lableView.getText().equals("ON")) {
+                            lableView.setText("OFF");
+                        }
                     }
                 } else if (3 == position) {
-                    if (lableView.getText().equals("OFF")) {
-                        lableView.setText("ON");
-                    } else if (lableView.getText().equals("ON")) {
-                        lableView.setText("OFF");
+                    if (isAll == true) {
+                        if (allState == true) {
+                            if (lableView.getText().equals("OFF")) {
+                                lableView.setText("ON");
+                            }
+                        } else {
+                            if (lableView.getText().equals("ON")) {
+                                lableView.setText("OFF");
+                            }
+                        }
+                    } else {
+                        if (lableView.getText().equals("OFF")) {
+                            lableView.setText("ON");
+                        } else if (lableView.getText().equals("ON")) {
+                            lableView.setText("OFF");
+                        }
                     }
                 }
 
